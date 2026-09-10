@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "fotslugcats:block/bluefruit_vine_0"
+    },
+    "berries=true": {
+      "model": "fotslugcats:block/bluefruit_vine_2"
+    }
+  }
+}

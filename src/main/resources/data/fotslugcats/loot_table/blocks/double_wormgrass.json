@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "count": 2,
+          "name": "fotslugcats:wormgrass"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fotslugcats:blocks/double_wormgrass"
+}

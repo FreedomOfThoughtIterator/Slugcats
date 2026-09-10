@@ -1,0 +1,9 @@
+{
+  "parent": "fotslugcats:customblock/vent_duct_small",
+  "textures": {
+    "all": "fotslugcats:block/ventductsmall",
+    "particle": "fotslugcats:block/ventductsmall",
+    "0": "fotslugcats:block/ventductsmall"
+  },
+  "render_type": "cutout_mipped"
+}

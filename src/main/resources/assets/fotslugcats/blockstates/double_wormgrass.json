@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "fotslugcats:block/wormgrass_bottom"
+    },
+    "half=upper": {
+      "model": "fotslugcats:block/wormgrass_top"
+    }
+  }
+}

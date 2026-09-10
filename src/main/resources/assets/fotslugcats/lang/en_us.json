@@ -1,0 +1,19 @@
+{
+  "death.attack.wormgrass_eat.item": "%1$s was killed by %2$s using %3$s",
+  "death.attack.wormgrass_eat.player": "%1$s was eaten alive whilst trying to escape %2$s",
+  "death.attack.wormgrass_eat": "%1$s was eaten alive by a patch of Wormgrass",
+
+  "block.fotslugcats.wormgrass": "Wormgrass",
+  "block.fotslugcats.genetically_modified_grass": "Genetically Modified Grass",
+  "block.fotslugcats.genetically_modified_weeds": "Genetically Modified Weeds",
+  "block.fotslugcats.karma_flower": "Karma Flower",
+  "block.fotslugcats.dark_bricks": "Dark Bricks",
+  "block.fotslugcats.iter_steel": "Iterator Steel",
+
+  "item.fotslugcats.bluefruit": "Bluefruit",
+  "item.fotslugcats.banilla": "Banilla",
+  "item.fotslugcats.karma_flower": "Karma Flower",
+  "item.fotslugcats.karmic_essence": "Karmic Essence",
+
+  "creativetab.fotslugcats.fot_rw": "FoT's Rain World Items"
+}

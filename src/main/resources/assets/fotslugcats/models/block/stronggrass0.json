@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "fotslugcats:block/stronggrass0"
+  },
+  "render_type": "cutout_mipped"
+}

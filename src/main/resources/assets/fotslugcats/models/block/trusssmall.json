@@ -1,0 +1,8 @@
+{
+  "parent": "fotslugcats:customblock/small_truss",
+  "textures": {
+    "all": "fotslugcats:block/truss",
+    "particle": "fotslugcats:block/truss"
+  },
+  "render_type": "cutout_mipped"
+}

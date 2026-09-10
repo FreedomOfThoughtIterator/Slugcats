@@ -1,0 +1,9 @@
+{
+  "parent": "fotslugcats:customblock/climbpole",
+  "textures": {
+    "all": "fotslugcats:block/poletexture",
+    "particle": "fotslugcats:block/poletexture",
+    "2": "fotslugcats:block/poletexture"
+  },
+  "render_type": "translucent"
+}

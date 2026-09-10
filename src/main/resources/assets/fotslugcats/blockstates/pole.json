@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "fotslugcats:block/pole",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "fotslugcats:block/pole"
+    },
+    "axis=z": {
+      "model": "fotslugcats:block/pole",
+      "x": 90
+    }
+  }
+}

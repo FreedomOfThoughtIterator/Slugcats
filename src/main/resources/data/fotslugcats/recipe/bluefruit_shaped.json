@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "BBB",
+    " B "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "fotslugcats:bluefruit"
+  }
+}

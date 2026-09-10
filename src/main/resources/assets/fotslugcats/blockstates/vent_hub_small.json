@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "fotslugcats:block/venthubsmall"
+    },
+    "facing=east": {
+      "model": "fotslugcats:block/venthubsmall",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "fotslugcats:block/venthubsmall",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fotslugcats:block/venthubsmall",
+      "y": 270
+    }
+  }
+}

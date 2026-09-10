@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "fotslugcats:block/wormgrass_upper_anim",
+    "particle": "fotslugcats:block/wormgrass_upper_anim"
+  },
+  "render_type": "cutout_mipped"
+}

@@ -1,0 +1,32 @@
+{
+  "karma_inc_gui_open": {
+    "subtitle": "fotslugcats:karma_inc_gui_open",
+    "sounds": [
+      "fotslugcats:karma_inc_gui_open"
+    ]
+  },
+  "karma_inc": {
+    "subtitle": "fotslugcats:karma_inc",
+    "sounds": [
+      "fotslugcats:karma_inc"
+    ]
+  },
+  "karma_chg": {
+    "subtitle": "fotslugcats:karma_chg",
+    "sounds": [
+      "fotslugcats:karma_chg"
+    ]
+  },
+  "karma_dec_gui_open": {
+    "subtitle": "fotslugcats:karma_dec_gui_open",
+    "sounds": [
+      "fotslugcats:karma_dec_gui_open"
+    ]
+  },
+  "karma_dec": {
+    "subtitle": "fotslugcats:karma_dec",
+    "sounds": [
+      "fotslugcats:karma_dec"
+    ]
+  }
+}

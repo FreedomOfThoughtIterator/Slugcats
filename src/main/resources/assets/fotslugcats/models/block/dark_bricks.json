@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "fotslugcats:block/dark_bricks",
+    "particle": "fotslugcats:block/dark_bricks"
+  }
+}
