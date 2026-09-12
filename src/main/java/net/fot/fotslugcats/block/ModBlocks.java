@@ -26,6 +26,92 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(FoTSlugcats.MOD_ID);
 
+    //PEBBLE FRUUIIIIIIIIIT
+    public static final DeferredBlock<Block> PEBBLEFRUIT_VINE = registerBlock(
+            "pebblefruit_vine",
+            () -> new PebblefruitBlock(BlockBehaviour.Properties.of()
+                    .instabreak()
+                    //.requiresCorrectToolForDrops()
+                    .sound(SoundType.CAVE_VINES)
+                    .pushReaction(PushReaction.DESTROY)
+                    .ignitedByLava()
+                    .randomTicks()
+                    .noCollission()
+            ),
+            false
+    );
+
+    public static final DeferredBlock<Block> PEBBLEFRUIT_PLANT_VINE = registerBlock(
+            "pebblefruit_plant_vine",
+            () -> new PebblefruitPlantBlock(BlockBehaviour.Properties.of()
+                    .instabreak()
+                    //.requiresCorrectToolForDrops()
+                    .sound(SoundType.CAVE_VINES)
+                    .pushReaction(PushReaction.DESTROY)
+                    .ignitedByLava()
+                    .randomTicks()
+                    .noCollission()
+            ),
+            false
+    );
+
+    public static final DeferredBlock<Block> MOONFRUIT_VINE = registerBlock(
+            "moonfruit_vine",
+            () -> new MoonfruitBlock(BlockBehaviour.Properties.of()
+                    .instabreak()
+                    //.requiresCorrectToolForDrops()
+                    .sound(SoundType.CAVE_VINES)
+                    .pushReaction(PushReaction.DESTROY)
+                    .ignitedByLava()
+                    .randomTicks()
+                    .noCollission()
+            ),
+            false
+    );
+
+    public static final DeferredBlock<Block> MOONFRUIT_PLANT_VINE = registerBlock(
+            "moonfruit_plant_vine",
+            () -> new MoonfruitPlantBlock(BlockBehaviour.Properties.of()
+                    .instabreak()
+                    //.requiresCorrectToolForDrops()
+                    .sound(SoundType.CAVE_VINES)
+                    .pushReaction(PushReaction.DESTROY)
+                    .ignitedByLava()
+                    .randomTicks()
+                    .noCollission()
+            ),
+            false
+    );
+
+    public static final DeferredBlock<Block> FREEDOMFRUIT_VINE = registerBlock(
+            "freedomfruit_vine",
+            () -> new FreedomfruitBlock(BlockBehaviour.Properties.of()
+                    .instabreak()
+                    //.requiresCorrectToolForDrops()
+                    .sound(SoundType.CAVE_VINES)
+                    .pushReaction(PushReaction.DESTROY)
+                    .ignitedByLava()
+                    .randomTicks()
+                    .noCollission()
+            ),
+            false
+    );
+
+    public static final DeferredBlock<Block> FREEDOMFRUIT_PLANT_VINE = registerBlock(
+            "freedomfruit_plant_vine",
+            () -> new FreedomfruitPlantBlock(BlockBehaviour.Properties.of()
+                    .instabreak()
+                    //.requiresCorrectToolForDrops()
+                    .sound(SoundType.CAVE_VINES)
+                    .pushReaction(PushReaction.DESTROY)
+                    .ignitedByLava()
+                    .randomTicks()
+                    .noCollission()
+            ),
+            false
+    );
+
+
     //Plants
     public static final DeferredBlock<Block> BLUEFRUIT_VINE = registerBlock(
             "bluefruit_vine",
@@ -211,9 +297,55 @@ public class ModBlocks {
             true
     );
 
+    public static final DeferredBlock<Block> VENTCURVEDSMALL = registerBlock(
+            "vent_curved_small",
+            () -> new CurvedBlock(BlockBehaviour.Properties.of()
+                    .strength(2, 100)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .isViewBlocking(ModBlocks::never)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> VENTLARGE = registerBlock(
+            "vent_duct_large",
+            () -> new CurvedBlock(BlockBehaviour.Properties.of()
+                    .strength(2, 100)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .isViewBlocking(ModBlocks::never)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> VENTCURVEDLARGE = registerBlock(
+            "vent_curved_large",
+            () -> new VentCurvedBlock(BlockBehaviour.Properties.of()
+                    .strength(2, 100)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .isViewBlocking(ModBlocks::never)
+            ),
+            true
+    );
+
     public static final DeferredBlock<Block> VENT_HUB_SMALL = registerBlock(
             "vent_hub_small",
             () -> new YAxisRotationBlock(BlockBehaviour.Properties.of()
+                    .strength(2, 100)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> VENT_DUCT_BLOCK = registerBlock(
+            "vent_duct_block",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of()
                     .strength(2, 100)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.METAL)

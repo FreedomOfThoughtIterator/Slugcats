@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "fotslugcats:block/fotfruitvine2",
+    "particle": "fotslugcats:block/fotfruitvine2"
+  },
+  "render_type": "cutout_mipped"
+}

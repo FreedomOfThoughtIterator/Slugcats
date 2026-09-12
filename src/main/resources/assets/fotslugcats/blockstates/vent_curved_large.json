@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "face=floor,facing=north": {
+      "model": "fotslugcats:block/ventcurvedlarge"
+    },
+    "face=floor,facing=east": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "y": 90
+    },
+    "face=floor,facing=south": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "y": 270
+    },
+    "face=wall,facing=north": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 90
+    },
+    "face=wall,facing=east": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=east": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=south": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "fotslugcats:block/ventcurvedlarge",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

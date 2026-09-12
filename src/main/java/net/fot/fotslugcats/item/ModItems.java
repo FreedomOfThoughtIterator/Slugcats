@@ -17,15 +17,25 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(FoTSlugcats.MOD_ID);
 
     public static final DeferredItem<Item> BLUEFRUIT = ITEMS.register("bluefruit",
-            () -> new ItemNameBlockItem(ModBlocks.BLUEFRUIT_VINE.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(4).saturationModifier(0.5f).build()))
+            () -> new ItemNameBlockItem(ModBlocks.BLUEFRUIT_VINE.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(4).saturationModifier(2f).build()))
+    );
+
+    public static final DeferredItem<Item> PEBBLEFRUIT = ITEMS.register("pebblefruit",
+            () -> new ItemNameBlockItem(ModBlocks.PEBBLEFRUIT_VINE.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(8).saturationModifier(4f).build()))
+    );
+    public static final DeferredItem<Item> MOONFRUIT = ITEMS.register("moonfruit",
+            () -> new ItemNameBlockItem(ModBlocks.MOONFRUIT_VINE.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(8).saturationModifier(4f).build()))
+    );
+    public static final DeferredItem<Item> FREEDOMFRUIT = ITEMS.register("freedomfruit",
+            () -> new ItemNameBlockItem(ModBlocks.FREEDOMFRUIT_VINE.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(8).saturationModifier(4f).build()))
     );
 
     public static final DeferredItem<Item> BANILLA = ITEMS.register("banilla",
-            () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(12).saturationModifier(0.75f).build()))
+            () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(12).saturationModifier(6f).build()))
     );
 
     public static final DeferredItem<Item> KARMA_FLOWER = ITEMS.register("karma_flower",
-            () -> new KarmaFlowerItem(ModBlocks.KARMAFLOWER.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(8).saturationModifier(0.7f).build()))
+            () -> new KarmaFlowerItem(ModBlocks.KARMAFLOWER.get(), new Item.Properties().food((new FoodProperties.Builder()).nutrition(8).saturationModifier(4f).build()))
     );
 
     public static final DeferredItem<Item> KARMIC_ESSENCE = ITEMS.register("karmic_essence",

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "fotslugcats:block/ventductblock",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "fotslugcats:block/ventductblock"
+    },
+    "axis=z": {
+      "model": "fotslugcats:block/ventductblock",
+      "x": 90
+    }
+  }
+}

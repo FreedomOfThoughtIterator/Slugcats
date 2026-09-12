@@ -1,0 +1,9 @@
+{
+  "parent": "fotslugcats:customblock/vent_curved_large",
+  "textures": {
+    "all": "fotslugcats:block/ventcurvedlarge",
+    "particle": "fotslugcats:block/ventcurvedlarge",
+    "1": "fotslugcats:block/ventcurvedlarge"
+  },
+  "render_type": "cutout_mipped"
+}
