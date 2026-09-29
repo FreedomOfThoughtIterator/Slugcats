@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "fotslugcats:block/metalicblock",
-    "particle": "fotslugcats:block/metalicblock"
-  }
-}

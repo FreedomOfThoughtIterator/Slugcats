@@ -28,6 +28,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.DOUBLE_WORMGRASS);
                         output.accept(ModBlocks.GENETICALLYMODIFIEDGRASS);
                         output.accept(ModBlocks.GENETICALLYMODIFIEDWEEDS);
+                        output.accept(ModItems.DATAPEARL);
                     })).build());
 
     public static void register(IEventBus eventBus) {

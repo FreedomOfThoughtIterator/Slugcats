@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "fotslugcats:block/pole_corner_junction"
+    },
+    "facing=east": {
+      "model": "fotslugcats:block/pole_corner_junction",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "fotslugcats:block/pole_corner_junction",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fotslugcats:block/pole_corner_junction",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "fotslugcats:block/pole_corner_junction",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "fotslugcats:block/pole_corner_junction",
+      "x": 90
+    }
+  }
+}

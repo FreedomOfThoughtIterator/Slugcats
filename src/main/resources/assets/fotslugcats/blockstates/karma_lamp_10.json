@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "fotslugcats:block/karmalamp10"
+    },
+    "lit=false": {
+      "model": "fotslugcats:block/karmalampoff"
+    }
+  }
+}

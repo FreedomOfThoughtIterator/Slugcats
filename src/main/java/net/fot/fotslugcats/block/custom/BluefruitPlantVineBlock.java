@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BluefruitPlantVineBlock extends GrowingPlantBodyBlock implements BluefruitVines {
+public class BluefruitPlantVineBlock extends GrowingPlantBodyBlock implements IteratorfruitVines {
     public static final MapCodec<BluefruitPlantVineBlock> CODEC = simpleCodec(BluefruitPlantVineBlock::new);
 
     @Override

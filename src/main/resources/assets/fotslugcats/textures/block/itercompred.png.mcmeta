@@ -1,0 +1,19 @@
+{
+    "texture": {
+        "blur": true,
+        "clamp": true,
+        "mipmap_strategy": "mean",
+        "alpha_cutoff_bias": 0.3
+    },
+    "gui": {
+        "scaling": {
+            "type": "stretch"
+        }
+    },
+    "animation": {
+
+        "frametime": 2,
+        "width": 16,
+        "height": 16
+    }
+}

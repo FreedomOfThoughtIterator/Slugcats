@@ -29,7 +29,7 @@ import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 
-public class BluefruitVineBlock extends GrowingPlantHeadBlock implements BluefruitVines{
+public class BluefruitVineBlock extends GrowingPlantHeadBlock implements IteratorfruitVines{
     public static final MapCodec<BluefruitVineBlock> CODEC = simpleCodec(BluefruitVineBlock::new);
     private static final float CHANCE_OF_BLUEFRUIT_GROWTH = 0.11F;
 
@@ -83,7 +83,7 @@ public class BluefruitVineBlock extends GrowingPlantHeadBlock implements Bluefru
     }
 
     protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        return BluefruitVines.use(player, blockState, level, blockPos);
+        return IteratorfruitVines.use(player, blockState, level, blockPos, ModItems.BLUEFRUIT.get());
     }
 
     @Override

@@ -1,0 +1,9 @@
+{
+  "parent": "fotslugcats:customblock/polei1",
+  "textures": {
+    "all": "fotslugcats:block/poletexture",
+    "particle": "fotslugcats:block/poletexture",
+    "missing": "fotslugcats:block/poletexture"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "fotslugcats:block/itercompred",
+    "particle": "fotslugcats:block/itercompred"
+  }
+}

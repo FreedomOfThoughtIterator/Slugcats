@@ -26,12 +26,13 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(FoTSlugcats.MOD_ID);
 
+    public Block block = Blocks.REDSTONE_LAMP;
+
     //PEBBLE FRUUIIIIIIIIIT
     public static final DeferredBlock<Block> PEBBLEFRUIT_VINE = registerBlock(
             "pebblefruit_vine",
             () -> new PebblefruitBlock(BlockBehaviour.Properties.of()
                     .instabreak()
-                    //.requiresCorrectToolForDrops()
                     .sound(SoundType.CAVE_VINES)
                     .pushReaction(PushReaction.DESTROY)
                     .ignitedByLava()
@@ -51,6 +52,7 @@ public class ModBlocks {
                     .ignitedByLava()
                     .randomTicks()
                     .noCollission()
+                    .noLootTable()
             ),
             false
     );
@@ -79,6 +81,7 @@ public class ModBlocks {
                     .ignitedByLava()
                     .randomTicks()
                     .noCollission()
+                    .noLootTable()
             ),
             false
     );
@@ -107,6 +110,7 @@ public class ModBlocks {
                     .ignitedByLava()
                     .randomTicks()
                     .noCollission()
+                    .noLootTable()
             ),
             false
     );
@@ -137,6 +141,7 @@ public class ModBlocks {
                     .ignitedByLava()
                     .randomTicks()
                     .noCollission()
+                    .noLootTable()
             ),
             false
     );
@@ -183,6 +188,7 @@ public class ModBlocks {
                     .replaceable()
                     .ignitedByLava()
                     .pushReaction(PushReaction.DESTROY)
+                    .noLootTable()
             ),
             true
     );
@@ -198,6 +204,7 @@ public class ModBlocks {
                     .replaceable()
                     .ignitedByLava()
                     .pushReaction(PushReaction.DESTROY)
+                    .noLootTable()
             ),
             true
     );
@@ -225,7 +232,62 @@ public class ModBlocks {
             "pole",
             () -> new PoleBlock(BlockBehaviour.Properties.of()
                     .sound(SoundType.STONE)
-                    .strength(2.0F)
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> POLECORNER = registerBlock(
+            "pole_corner",
+            () -> new PoleCornerBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE)
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> POLEIJUNC = registerBlock(
+            "pole_i_junction",
+            () -> new PoleIJunctionBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE)
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> POLECORNERJUNC = registerBlock(
+            "pole_corner_junction",
+            () -> new PoleCornerJunctionBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE)
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> POLETJUNC = registerBlock(
+            "pole_t_junction",
+            () -> new PoleTJunctionBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE)
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()   
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> POLEPLUSJUNC = registerBlock(
+            "pole_plus_junction",
+            () -> new PolePlusJunctionBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE)
+                    .strength(1.0F)
                     .requiresCorrectToolForDrops()
                     .noOcclusion()
             ),
@@ -237,7 +299,17 @@ public class ModBlocks {
             "dark_bricks",
             () -> new Block(BlockBehaviour.Properties.of()
                     .sound(SoundType.STONE)
-                    .strength(2.0F)
+                    .strength(1.5F)
+                    .requiresCorrectToolForDrops()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> DARK_ROCK = registerBlock(
+            "dark_rock",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE)
+                    .strength(1.5F)
                     .requiresCorrectToolForDrops()
             ),
             true
@@ -249,6 +321,7 @@ public class ModBlocks {
                     .strength(-1, 1000000)
                     .sound(SoundType.METAL)
                     .pushReaction(PushReaction.IGNORE)
+                    .noLootTable()
             ),
             true
     );
@@ -259,6 +332,7 @@ public class ModBlocks {
                     .strength(-1, 1000000)
                     .sound(SoundType.METAL)
                     .pushReaction(PushReaction.IGNORE)
+                    .noLootTable()
             ),
             true
     );
@@ -269,6 +343,40 @@ public class ModBlocks {
                     .strength(-1, 1000000)
                     .sound(SoundType.METAL)
                     .pushReaction(PushReaction.IGNORE)
+                    .noLootTable()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> ITER_LATTICE = registerBlock(
+            "iter_lattice",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(-1, 1000000)
+                    .sound(SoundType.METAL)
+                    .pushReaction(PushReaction.IGNORE)
+                    .noLootTable()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> ITER_TILE_UPPER = registerBlock(
+            "iter_tile_upper",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(-1, 1000000)
+                    .sound(SoundType.METAL)
+                    .pushReaction(PushReaction.IGNORE)
+                    .noLootTable()
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> ITER_TILE_LOWER = registerBlock(
+            "iter_tile_lower",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(-1, 1000000)
+                    .sound(SoundType.METAL)
+                    .pushReaction(PushReaction.IGNORE)
+                    .noLootTable()
             ),
             true
     );
@@ -276,7 +384,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TRUSS = registerBlock(
             "metallic_truss_small",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(2, 100)
+                    .strength(2)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.METAL)
                     .noOcclusion()
@@ -333,6 +441,46 @@ public class ModBlocks {
             true
     );
 
+    public static final DeferredBlock<Block> ITER_COMP_BLUE = registerBlock(
+            "iter_comp_blue",
+            () -> new IterCompBlock(BlockBehaviour.Properties.of()
+                    .strength(2, 100)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> ITER_COMP_RED = registerBlock(
+            "iter_comp_red",
+            () -> new IterCompBlock(BlockBehaviour.Properties.of()
+                    .strength(2, 100)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> METAL_PLATE = registerBlock(
+            "metal_plate",
+            () -> new IterCompBlock(BlockBehaviour.Properties.of()
+                    .strength(2)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> PANEL = registerBlock(
+            "panel",
+            () -> new IterCompBlock(BlockBehaviour.Properties.of()
+                    .strength(2)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)
+            ),
+            true
+    );
+
     public static final DeferredBlock<Block> VENT_HUB_SMALL = registerBlock(
             "vent_hub_small",
             () -> new YAxisRotationBlock(BlockBehaviour.Properties.of()
@@ -352,6 +500,99 @@ public class ModBlocks {
             ),
             true
     );
+
+    // Karma Lamps
+    public static final DeferredBlock<Block> KARMA_LAMP_1 = registerBlock(
+            "karma_lamp_1",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_2 = registerBlock(
+            "karma_lamp_2",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_3 = registerBlock(
+            "karma_lamp_3",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_4 = registerBlock(
+            "karma_lamp_4",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_5 = registerBlock(
+            "karma_lamp_5",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_6 = registerBlock(
+            "karma_lamp_6",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_7 = registerBlock(
+            "karma_lamp_7",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_8 = registerBlock(
+            "karma_lamp_8",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_9 = registerBlock(
+            "karma_lamp_9",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> KARMA_LAMP_10 = registerBlock(
+            "karma_lamp_10",
+            () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+
 
     private static Boolean never(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, EntityType<?> entityType) {
         return false;

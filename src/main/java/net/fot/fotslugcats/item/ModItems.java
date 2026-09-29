@@ -3,12 +3,15 @@ package net.fot.fotslugcats.item;
 import net.fot.fotslugcats.FoTSlugcats;
 import net.fot.fotslugcats.block.ModBlocks;
 import net.fot.fotslugcats.block.custom.BluefruitVineBlock;
+import net.fot.fotslugcats.item.custom.DataPearlItem;
 import net.fot.fotslugcats.item.custom.KarmaFlowerItem;
 import net.fot.fotslugcats.item.custom.KarmicEssenceItem;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.component.WritableBookContent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -40,6 +43,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> KARMIC_ESSENCE = ITEMS.register("karmic_essence",
             () -> new KarmicEssenceItem(new Item.Properties().durability(8).fireResistant().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<Item> DATAPEARL = ITEMS.register("datapearl",
+            () -> new DataPearlItem((new Item.Properties().rarity(Rarity.UNCOMMON).component(DataComponents.WRITABLE_BOOK_CONTENT, WritableBookContent.EMPTY)))
     );
 
     public static void register(IEventBus eventBus) {

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "fotslugcats:block/karmalamp9",
+    "particle": "fotslugcats:block/karmalampoff"
+  }
+}
