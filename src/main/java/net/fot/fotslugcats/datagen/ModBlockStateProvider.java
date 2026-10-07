@@ -21,12 +21,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         BlockWithItem(ModBlocks.ITER_STEEL);
         BlockWithItem(ModBlocks.ITER_LATTICE);
         BlockWithItem(ModBlocks.ITER_TILE);
-        BlockWithItem(ModBlocks.ITER_TILE_UPPER);
-        BlockWithItem(ModBlocks.ITER_TILE_LOWER);
         BlockWithItem(ModBlocks.DARK_BRICKS);
         BlockWithItem(ModBlocks.DARK_ROCK);
         BlockWithItem(ModBlocks.METAL_PLATE);
         BlockWithItem(ModBlocks.PANEL);
+        BlockWithItem(ModBlocks.DATAPEARL_READER);
 
     }
 

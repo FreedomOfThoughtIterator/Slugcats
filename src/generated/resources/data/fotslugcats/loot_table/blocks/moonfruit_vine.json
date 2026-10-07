@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "fotslugcats:moonfruit_vine",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "berries": "true"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "fotslugcats:moonfruit"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fotslugcats:blocks/moonfruit_vine"
+}

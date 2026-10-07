@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "fotslugcats:pebblefruit_vine",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "berries": "true"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "fotslugcats:pebblefruit"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fotslugcats:blocks/pebblefruit_vine"
+}

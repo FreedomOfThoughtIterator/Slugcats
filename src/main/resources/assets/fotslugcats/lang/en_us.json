@@ -2,6 +2,19 @@
   "death.attack.wormgrass_eat.item": "%1$s was killed by %2$s using %3$s",
   "death.attack.wormgrass_eat.player": "%1$s was eaten alive whilst trying to escape %2$s",
   "death.attack.wormgrass_eat": "%1$s was eaten alive by a patch of Wormgrass",
+  "death.attack.rain_crush.item": "%1$s was killed by %2$s using %3$s",
+  "death.attack.rain_crush.player": "%1$s was crushed whilst trying to escape %2$s",
+  "death.attack.rain_crush": "%1$s was crushed by the Deadly Rain",
+
+  "entity.fotslugcats.slugcat": "Slugcat",
+  "entity.fotslugcats.monk": "Monk",
+  "entity.fotslugcats.survivor": "Survivor",
+  "entity.fotslugcats.hunter": "Hunter",
+
+  "subtitles.slugcatmeow": "Wawa",
+  "subtitles.slugpupmeow": "Pup Wawa",
+  "subtitles.slugcathit": "Slugcat hurts",
+  "subtitles.slugpupcry": "Slugpup cries",
 
   "block.fotslugcats.wormgrass": "Wormgrass",
   "block.fotslugcats.double_wormgrass": "Tall Wormgrass",
@@ -42,12 +55,12 @@
 
   "painting.fotslugcats.glorbo_small.title": "The Creature (Small)",
   "painting.fotslugcats.glorbo_small.author": "Unknown",
-  "painting.fotslugcats.glorbo_med.title": "The Creature (Medium)",
-  "painting.fotslugcats.glorbo_med.author": "Unknown",
+  "painting.fotslugcats.glorbo_medium.title": "The Creature (Medium)",
+  "painting.fotslugcats.glorbo_medium.author": "Unknown",
   "painting.fotslugcats.glorbo_big.title": "The Creature (Big)",
   "painting.fotslugcats.glorbo_big.author": "Unknown",
-  "painting.fotslugcats.catboy_2_vbig.title": "Catboy Tail (Very Big)",
-  "painting.fotslugcats.catboy_2_vbig.author": "Videocult",
+  "painting.fotslugcats.catboy_2_very_big.title": "Catboy Tail (Very Big)",
+  "painting.fotslugcats.catboy_2_very_big.author": "Videocult",
   "painting.fotslugcats.catboy_2_big.title": "Catboy Tail (Big)",
   "painting.fotslugcats.catboy_2_big.author": "Videocult",
   "painting.fotslugcats.catboy_2_med.title": "Catboy Tail (Medium)",
@@ -64,6 +77,13 @@
   "item.fotslugcats.banilla": "Banilla",
   "item.fotslugcats.karma_flower": "Karma Flower",
   "item.fotslugcats.karmic_essence": "Karmic Essence",
+  "item.fotslugcats.slugcat_spawn_egg": "Slugcat Spawn Egg",
+  "item.fotslugcats.monk_spawn_egg": "Monk Spawn Egg",
+  "item.fotslugcats.survivor_spawn_egg": "Survivor Spawn Egg",
+  "item.fotslugcats.hunter_spawn_egg": "Hunter Spawn Egg",
+  "item.fotslugcats.slugcat_meat": "Raw Slugcat",
+  "item.fotslugcats.cooked_slugcat_meat": "Cooked Slugcat",
+
 
   "creativetab.fotslugcats.fot_rw": "FoT's Rain World Items"
 }

@@ -46,6 +46,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.DARK_ROCK.get())
                 .add(ModBlocks.PANEL.get())
                 .add(ModBlocks.TRUSS.get())
+                .add(ModBlocks.DATAPEARL_READER.get())
 
         ;
 
@@ -60,6 +61,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.PANEL.get())
+                .add(ModBlocks.DATAPEARL_READER.get())
                 .add(ModBlocks.TRUSS.get())
         ;
     }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_karma_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fotslugcats:karma_flower"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:karmic_essence_from_smelting_karma_flower"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_karma_flower"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:karmic_essence_from_smelting_karma_flower"
+    ]
+  }
+}

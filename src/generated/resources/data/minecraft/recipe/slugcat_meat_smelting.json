@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "ingredient": {
+    "item": "fotslugcats:slugcat_meat"
+  },
+  "result": {
+    "count": 1,
+    "id": "fotslugcats:cooked_slugcat_meat"
+  }
+}

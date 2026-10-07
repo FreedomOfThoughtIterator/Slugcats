@@ -1,0 +1,16 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:river",
+    "minecraft:birch_forest",
+    "minecraft:dark_forest",
+    "minecraft:cherry_grove"
+  ],
+  "spawners": {
+    "type": "fotslugcats:slugcat",
+    "maxCount": 10,
+    "minCount": 5,
+    "weight": 20
+  }
+}

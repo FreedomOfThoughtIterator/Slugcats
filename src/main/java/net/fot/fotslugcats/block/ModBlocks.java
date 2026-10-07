@@ -359,28 +359,6 @@ public class ModBlocks {
             true
     );
 
-    public static final DeferredBlock<Block> ITER_TILE_UPPER = registerBlock(
-            "iter_tile_upper",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(-1, 1000000)
-                    .sound(SoundType.METAL)
-                    .pushReaction(PushReaction.IGNORE)
-                    .noLootTable()
-            ),
-            true
-    );
-
-    public static final DeferredBlock<Block> ITER_TILE_LOWER = registerBlock(
-            "iter_tile_lower",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(-1, 1000000)
-                    .sound(SoundType.METAL)
-                    .pushReaction(PushReaction.IGNORE)
-                    .noLootTable()
-            ),
-            true
-    );
-
     public static final DeferredBlock<Block> TRUSS = registerBlock(
             "metallic_truss_small",
             () -> new Block(BlockBehaviour.Properties.of()
@@ -588,6 +566,16 @@ public class ModBlocks {
             () -> new RedstoneLampBlock(BlockBehaviour.Properties.of()
                     .strength(1)
                     .sound(SoundType.GLASS)
+            ),
+            true
+    );
+
+    public static final DeferredBlock<Block> DATAPEARL_READER = registerBlock(
+            "datapearl_reader",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(1)
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()
             ),
             true
     );

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "fotslugcats:block/clean_iter_steel"
+  }
+}

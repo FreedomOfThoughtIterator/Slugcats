@@ -28,5 +28,72 @@
     "sounds": [
       "fotslugcats:karma_dec"
     ]
+  },
+  "slugcatmeow": {
+    "subtitle": "subtitles.slugcatmeow",
+    "sounds": [
+      "fotslugcats:meownormal1",
+      "fotslugcats:meownormal2",
+      "fotslugcats:meownormal3",
+      "fotslugcats:meownormal4",
+      "fotslugcats:meownormal5",
+      "fotslugcats:meownormal6",
+      "fotslugcats:meownormal7",
+      "fotslugcats:meownormal8",
+      "fotslugcats:meownormalshort1",
+      "fotslugcats:meownormalshort2",
+      "fotslugcats:meownormalshort3",
+      "fotslugcats:meownormalshort4",
+      "fotslugcats:meownormalshort5",
+      "fotslugcats:meownormalshort6",
+      "fotslugcats:meownormalshort7",
+      "fotslugcats:meownormalshort8"
+    ]
+  },
+  "slugpupmeow": {
+    "subtitle": "subtitles.slugpupmeow",
+    "sounds": [
+      "fotslugcats:meowpup1",
+      "fotslugcats:meowpup2",
+      "fotslugcats:meowpup3",
+      "fotslugcats:meowpup4",
+      "fotslugcats:meowpup5",
+      "fotslugcats:meowpup6",
+      "fotslugcats:meowpup7",
+      "fotslugcats:meowpup8",
+      "fotslugcats:meowpupshort1",
+      "fotslugcats:meowpupshort2",
+      "fotslugcats:meowpupshort3",
+      "fotslugcats:meowpupshort4",
+      "fotslugcats:meowpupshort5",
+      "fotslugcats:meowpupshort6",
+      "fotslugcats:meowpupshort7",
+      "fotslugcats:meowpupshort8"
+
+    ]
+  },
+  "slugcathit": {
+    "subtitle": "subtitles.slugcathit",
+    "sounds": [
+      "fotslugcats:gorea",
+      "fotslugcats:goreb",
+      "fotslugcats:gorec",
+      "fotslugcats:gored",
+      "fotslugcats:goree",
+      "fotslugcats:goref",
+      "fotslugcats:goreg",
+      "fotslugcats:goreh",
+      "fotslugcats:gorei",
+      "fotslugcats:gorej",
+      "fotslugcats:gorek"
+    ]
+  },
+
+  "slugpupcry": {
+    "subtitle": "subtitles.slugpupcry",
+    "sounds": [
+      "fotslugcats:cry1",
+      "fotslugcats:cry2"
+    ]
   }
 }

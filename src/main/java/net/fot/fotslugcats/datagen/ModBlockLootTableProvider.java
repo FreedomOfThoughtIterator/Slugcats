@@ -75,6 +75,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.KARMA_LAMP_8.get());
         dropSelf(ModBlocks.KARMA_LAMP_9.get());
         dropSelf(ModBlocks.KARMA_LAMP_10.get());
+        dropSelf(ModBlocks.DATAPEARL_READER.get());
 
     }
 

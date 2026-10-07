@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:redstone_lamp"
+    },
+    {
+      "item": "fotslugcats:karmic_essence"
+    },
+    {
+      "item": "fotslugcats:karmic_essence"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "fotslugcats:karma_lamp_2"
+  }
+}

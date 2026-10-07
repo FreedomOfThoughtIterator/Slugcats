@@ -3,6 +3,9 @@ package net.fot.fotslugcats;
 import it.unimi.dsi.fastutil.ints.IntObjectImmutablePair;
 import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import net.fot.fotslugcats.block.ModBlocks;
+import net.fot.fotslugcats.entity.ModEntities;
+import net.fot.fotslugcats.entity.client.*;
+import net.fot.fotslugcats.entity.custom.RandomSlugcatEntity;
 import net.fot.fotslugcats.init.ModAttributes;
 import net.fot.fotslugcats.item.ModCreativeModeTabs;
 import net.fot.fotslugcats.item.ModItems;
@@ -10,7 +13,10 @@ import net.fot.fotslugcats.screen.ModMenuTypes;
 import net.fot.fotslugcats.screen.custom.KarmaScreen;
 import net.fot.fotslugcats.sound.ModSounds;
 import net.fot.fotslugcats.world.Karma;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.server.TickTask;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.util.thread.SidedThreadGroups;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -75,6 +81,7 @@ public class FoTSlugcats {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModEntities.register(modEventBus);
         ModAttributes.REGISTRY.register(modEventBus);
         ModMenuTypes.MENUS.register(modEventBus);
 
@@ -121,5 +128,19 @@ public class FoTSlugcats {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @EventBusSubscriber
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+
+            EntityRenderers.register(ModEntities.SLUGCAT.get(), RandomSlugcatRenderer::new);
+            EntityRenderers.register(ModEntities.SURVIVOR.get(), SurvivorSlugcatRenderer::new);
+            EntityRenderers.register(ModEntities.MONK.get(), MonkSlugcatRenderer::new);
+            EntityRenderers.register(ModEntities.HUNTER.get(), HunterSlugcatRenderer::new);
+
+        }
     }
 }

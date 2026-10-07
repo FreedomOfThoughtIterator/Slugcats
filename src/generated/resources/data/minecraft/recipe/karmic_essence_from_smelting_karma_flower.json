@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "essence",
+  "ingredient": {
+    "item": "fotslugcats:karma_flower"
+  },
+  "result": {
+    "count": 1,
+    "id": "fotslugcats:karmic_essence"
+  }
+}

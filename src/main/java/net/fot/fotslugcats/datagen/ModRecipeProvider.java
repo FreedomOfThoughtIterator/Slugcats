@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
@@ -20,9 +21,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        List<ItemLike> KARMA_E_SMELTABLES = List.of(ModItems.KARMA_FLOWER
+        List<ItemLike> KARMA_E_SMELTABLES = List.of(ModItems.KARMA_FLOWER);
 
-    );
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.KARMA_LAMP_1)
                 .requires(Blocks.REDSTONE_LAMP)
@@ -66,9 +66,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', Items.REDSTONE_LAMP)
-                .define('B', ModItems.KARMIC_ESSENCE.get())
+                .define('A', Items.REDSTONE_LAMP).define('B', ModItems.KARMIC_ESSENCE.get())
                 .unlockedBy("has_essence", has(ModItems.KARMIC_ESSENCE)).save(recipeOutput);
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModItems.SLUGMEAT),
+                        RecipeCategory.FOOD,
+                        ModItems.COOKED_SLUGMEAT,
+                        0.2f,
+                        200
+                )
+                .unlockedBy("has_kelp", has(ModItems.SLUGMEAT))
+                .save(recipeOutput, "slugcat_meat_smelting");
+        SimpleCookingRecipeBuilder.smoking(
+                        Ingredient.of(ModItems.SLUGMEAT),
+                        RecipeCategory.FOOD,
+                        ModItems.COOKED_SLUGMEAT,
+                        0.2f,
+                        100
+                )
+                .unlockedBy("has_slugcat_meat", has(ModItems.SLUGMEAT))
+                .save(recipeOutput, "slugcat_meat_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ModItems.SLUGMEAT),
+                        RecipeCategory.FOOD,
+                        ModItems.COOKED_SLUGMEAT,
+                        0.2f,
+                        200
+                )
+                .unlockedBy("has_slugcat_meat", has(ModItems.SLUGMEAT))
+                .save(recipeOutput, "slugcat_meat_campfirecooking");
+
 
         oreSmelting(recipeOutput, KARMA_E_SMELTABLES, RecipeCategory.MISC, ModItems.KARMIC_ESSENCE.get(), 0.5F, 200, "essence");
     }

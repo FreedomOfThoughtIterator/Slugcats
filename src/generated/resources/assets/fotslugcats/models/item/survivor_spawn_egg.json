@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fotslugcats:item/survivor_spawn_egg"
+  }
+}
