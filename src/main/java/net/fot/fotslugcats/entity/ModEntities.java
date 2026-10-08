@@ -20,6 +20,10 @@ public class ModEntities {
             ENTITY_TYPES.register("slugcat", () -> EntityType.Builder.of(RandomSlugcatEntity::new, MobCategory.CREATURE)
                     .sized(0.5f, 1f).build("slugcat"));
 
+    public static final Supplier<EntityType<SlupEntity>> SLUP =
+            ENTITY_TYPES.register("slup", () -> EntityType.Builder.of(SlupEntity::new, MobCategory.AMBIENT)
+                    .sized(0.2f, 0.5f).build("slup"));
+
     public static final Supplier<EntityType<SurvivorSlugcatEntity>> SURVIVOR =
             ENTITY_TYPES.register("survivor", () -> EntityType.Builder.of(SurvivorSlugcatEntity::new, MobCategory.CREATURE)
                     .sized(0.5f, 1f).build("survivor"));
@@ -31,6 +35,7 @@ public class ModEntities {
     public static final Supplier<EntityType<HunterSlugcatEntity>> HUNTER =
             ENTITY_TYPES.register("hunter", () -> EntityType.Builder.of(HunterSlugcatEntity::new, MobCategory.CREATURE)
                     .sized(0.5f, 1f).build("hunter"));
+
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

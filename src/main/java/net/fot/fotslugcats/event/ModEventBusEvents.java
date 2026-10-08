@@ -8,6 +8,7 @@ import net.fot.fotslugcats.entity.client.SlugpupAnimations;
 import net.fot.fotslugcats.entity.client.SlugpupModel;
 import net.fot.fotslugcats.entity.custom.RandomSlugcatEntity;
 import net.fot.fotslugcats.entity.custom.SlugcatEntity;
+import net.fot.fotslugcats.entity.custom.SlupEntity;
 import net.fot.fotslugcats.entity.custom.SurvivorSlugcatEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -43,6 +44,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
         @SubscribeEvent
         public static void registerAttributes(EntityAttributeCreationEvent event) {
             event.put(ModEntities.SLUGCAT.get(), RandomSlugcatEntity.createAttributes().build());
+            event.put(ModEntities.SLUP.get(), SlupEntity.createAttributes().build());
             event.put(ModEntities.SURVIVOR.get(), SurvivorSlugcatEntity.createAttributes().build());
             event.put(ModEntities.MONK.get(), SurvivorSlugcatEntity.createAttributes().build());
             event.put(ModEntities.HUNTER.get(), SurvivorSlugcatEntity.createAttributes().build());

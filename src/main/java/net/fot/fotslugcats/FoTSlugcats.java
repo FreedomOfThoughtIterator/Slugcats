@@ -15,6 +15,7 @@ import net.fot.fotslugcats.sound.ModSounds;
 import net.fot.fotslugcats.world.Karma;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.server.TickTask;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.util.thread.SidedThreadGroups;
@@ -137,6 +138,7 @@ public class FoTSlugcats {
 
 
             EntityRenderers.register(ModEntities.SLUGCAT.get(), RandomSlugcatRenderer::new);
+            EntityRenderers.register(ModEntities.SLUP.get(), SlupRenderer::new);
             EntityRenderers.register(ModEntities.SURVIVOR.get(), SurvivorSlugcatRenderer::new);
             EntityRenderers.register(ModEntities.MONK.get(), MonkSlugcatRenderer::new);
             EntityRenderers.register(ModEntities.HUNTER.get(), HunterSlugcatRenderer::new);
