@@ -15,9 +15,6 @@ public class SlupEntity extends SlugcatEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new PanicGoal(this, 2));
-        this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.5f));
-
     }
 
 }

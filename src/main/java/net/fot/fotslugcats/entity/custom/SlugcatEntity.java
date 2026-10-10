@@ -1,8 +1,12 @@
 package net.fot.fotslugcats.entity.custom;
 
 import net.fot.fotslugcats.entity.ModEntities;
+import net.fot.fotslugcats.entity.SlugcatState;
 import net.fot.fotslugcats.item.ModItems;
 import net.fot.fotslugcats.sound.ModSounds;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -32,9 +36,11 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.constant.Constable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
@@ -42,6 +48,42 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
     public final AnimationState idleAnimationState = new AnimationState();
     public int idleAnimationTimeout = 0;
     public final AnimationState sitAnimationState = new AnimationState();
+
+    /* ASB (Advanced Slugcat Behaviours) variables and methods */
+    public int internalTickTimer = 0;
+    public static final EntityDataAccessor<Integer> INTERNALTICKTIMER =
+            SynchedEntityData.defineId(SlugcatEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Integer> HUNGER =
+            SynchedEntityData.defineId(SlugcatEntity.class, EntityDataSerializers.INT);
+
+    public int hunger = 20;
+    public SlugcatState state = SlugcatState.NORMAL;
+
+    private int getInternalTickTimer() {
+        return this.entityData.get(INTERNALTICKTIMER);
+    }
+
+    private int getHunger() {
+        return this.entityData.get(HUNGER);
+    }
+
+    private void incrementInternalTickTimer() {
+        this.entityData.set(INTERNALTICKTIMER, getInternalTickTimer() + 1);
+    }
+
+    private void decrementHunger() {
+        this.entityData.set(HUNGER, getHunger() - 1);
+    }
+
+    private void setInternalTickTimer(Integer value) {
+        this.entityData.set(INTERNALTICKTIMER, value);
+    }
+
+    private void setHunger(Integer value) {
+        this.entityData.set(HUNGER, value);
+    }
+
+
     public Map<Integer, Supplier<? extends EntityType<? extends SlugcatEntity>>> scugs =
             Map.of(
                     0, ModEntities.SLUGCAT,
@@ -52,6 +94,12 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
 
     public SlugcatEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(INTERNALTICKTIMER, 0).define(HUNGER, 20);
     }
 
     @Override
@@ -67,8 +115,7 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
         this.goalSelector.addGoal(7, new FollowOwnerGoal(this, 1, (float) 10, (float) 2));
 
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0f));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(2, new FloatGoal(this));
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 20, 10f));
     }
@@ -89,7 +136,8 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
                 .add(Attributes.MOVEMENT_SPEED, 0.3d)
                 .add(Attributes.FOLLOW_RANGE, 64d)
                 .add(Attributes.ATTACK_DAMAGE, 3d)
-                .add(Attributes.STEP_HEIGHT, 0.6f);
+                .add(Attributes.STEP_HEIGHT, 0.6f)
+        ;
     }
 
     protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
@@ -176,8 +224,30 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
     public void tick() {
         super.tick();
 
+        if (this.getInternalTickTimer() >= 600) {
+            if (this.state != SlugcatState.STARVING) {
+                if (this.hunger == 0) {
+                    this.state = SlugcatState.HUNGRY;
+                } else {
+                    --this.hunger;
+                    this.setInternalTickTimer(0);
+                }
+                System.out.println(this.hunger);
+            }
+        }
+        if (this.getInternalTickTimer() >= 6000 && this.state == SlugcatState.STARVING) {
+            this.kill();
+        }
+        if (this.getInternalTickTimer() >= 12000) {
+            this.state = SlugcatState.STARVING;
+            this.setInternalTickTimer(0);
+        }
+
         if(this.level().isClientSide()) {
             this.setupAnimationStates();
+        } else {
+            this.incrementInternalTickTimer();
+            System.out.println(this.internalTickTimer);
         }
     }
 
