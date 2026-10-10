@@ -4,6 +4,7 @@ import net.fot.fotslugcats.entity.ModEntities;
 import net.fot.fotslugcats.entity.SlugcatState;
 import net.fot.fotslugcats.item.ModItems;
 import net.fot.fotslugcats.sound.ModSounds;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -50,13 +51,11 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
     public final AnimationState sitAnimationState = new AnimationState();
 
     /* ASB (Advanced Slugcat Behaviours) variables and methods */
-    public int internalTickTimer = 0;
     public static final EntityDataAccessor<Integer> INTERNALTICKTIMER =
             SynchedEntityData.defineId(SlugcatEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Integer> HUNGER =
             SynchedEntityData.defineId(SlugcatEntity.class, EntityDataSerializers.INT);
 
-    public int hunger = 20;
     public SlugcatState state = SlugcatState.NORMAL;
 
     private int getInternalTickTimer() {
@@ -221,18 +220,32 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
     }
 
     @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putInt("InternalTickTimer", this.getInternalTickTimer());
+        compound.putInt("Hunger", this.getHunger());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.setInternalTickTimer(compound.getInt("InternalTickTimer"));
+        this.setHunger(compound.getInt("Hunger"));
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
         if (this.getInternalTickTimer() >= 600) {
             if (this.state != SlugcatState.STARVING) {
-                if (this.hunger == 0) {
+                if (this.getHunger() == 0) {
                     this.state = SlugcatState.HUNGRY;
                 } else {
-                    --this.hunger;
+                    this.decrementHunger();
                     this.setInternalTickTimer(0);
                 }
-                System.out.println(this.hunger);
+                System.out.println(this.getHunger());
             }
         }
         if (this.getInternalTickTimer() >= 6000 && this.state == SlugcatState.STARVING) {
@@ -247,7 +260,6 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
             this.setupAnimationStates();
         } else {
             this.incrementInternalTickTimer();
-            System.out.println(this.internalTickTimer);
         }
     }
 
