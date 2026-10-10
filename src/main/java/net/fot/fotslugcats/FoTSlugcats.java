@@ -5,38 +5,21 @@ import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import net.fot.fotslugcats.block.ModBlocks;
 import net.fot.fotslugcats.entity.ModEntities;
 import net.fot.fotslugcats.entity.client.*;
-import net.fot.fotslugcats.entity.custom.RandomSlugcatEntity;
-import net.fot.fotslugcats.init.ModAttributes;
+import net.fot.fotslugcats.attributes.ModAttributes;
 import net.fot.fotslugcats.item.ModCreativeModeTabs;
 import net.fot.fotslugcats.item.ModItems;
 import net.fot.fotslugcats.screen.ModMenuTypes;
-import net.fot.fotslugcats.screen.custom.KarmaScreen;
 import net.fot.fotslugcats.sound.ModSounds;
-import net.fot.fotslugcats.world.Karma;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.server.TickTask;
-import net.minecraft.world.entity.EntityType;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.util.thread.SidedThreadGroups;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -46,10 +29,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -136,7 +115,7 @@ public class FoTSlugcats {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
-
+            EntityRenderers.register(ModEntities.VOID.get(), VoidSlugcatRenderer::new);
             EntityRenderers.register(ModEntities.SLUGCAT.get(), RandomSlugcatRenderer::new);
             EntityRenderers.register(ModEntities.SLUP.get(), SlupRenderer::new);
             EntityRenderers.register(ModEntities.SURVIVOR.get(), SurvivorSlugcatRenderer::new);

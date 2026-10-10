@@ -1,7 +1,7 @@
 package net.fot.fotslugcats.world;
 
 import net.fot.fotslugcats.FoTSlugcats;
-import net.fot.fotslugcats.init.ModAttributes;
+import net.fot.fotslugcats.attributes.ModAttributes;
 import net.fot.fotslugcats.item.ModItems;
 import net.fot.fotslugcats.screen.custom.KarmaMenu;
 import net.fot.fotslugcats.sound.ModSounds;
@@ -20,8 +20,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerWakeUpEvent;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
-
-import java.awt.*;
 
 @EventBusSubscriber
 public class Karma {

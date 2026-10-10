@@ -16,6 +16,10 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, FoTSlugcats.MOD_ID);
 
+    public static final Supplier<EntityType<VoidSlugcatEntity>> VOID =
+            ENTITY_TYPES.register("void", () -> EntityType.Builder.of(VoidSlugcatEntity::new, MobCategory.MISC)
+                    .sized(0.5f, 1f).build("void"));
+
     public static final Supplier<EntityType<RandomSlugcatEntity>> SLUGCAT =
             ENTITY_TYPES.register("slugcat", () -> EntityType.Builder.of(RandomSlugcatEntity::new, MobCategory.CREATURE)
                     .sized(0.5f, 1f).build("slugcat"));

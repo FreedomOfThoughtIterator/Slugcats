@@ -3,7 +3,7 @@ package net.fot.fotslugcats.screen;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fot.fotslugcats.FoTSlugcats;
-import net.fot.fotslugcats.init.ModAttributes;
+import net.fot.fotslugcats.attributes.ModAttributes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;

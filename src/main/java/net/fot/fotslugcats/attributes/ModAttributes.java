@@ -1,4 +1,4 @@
-package net.fot.fotslugcats.init;
+package net.fot.fotslugcats.attributes;
 
 import net.fot.fotslugcats.FoTSlugcats;
 import net.minecraft.core.registries.BuiltInRegistries;

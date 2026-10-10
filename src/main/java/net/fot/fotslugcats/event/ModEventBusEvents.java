@@ -2,14 +2,8 @@ package net.fot.fotslugcats.event;
 
 import net.fot.fotslugcats.FoTSlugcats;
 import net.fot.fotslugcats.entity.ModEntities;
-import net.fot.fotslugcats.entity.client.HunterModel;
-import net.fot.fotslugcats.entity.client.SlugcatModel;
-import net.fot.fotslugcats.entity.client.SlugpupAnimations;
-import net.fot.fotslugcats.entity.client.SlugpupModel;
-import net.fot.fotslugcats.entity.custom.RandomSlugcatEntity;
-import net.fot.fotslugcats.entity.custom.SlugcatEntity;
-import net.fot.fotslugcats.entity.custom.SlupEntity;
-import net.fot.fotslugcats.entity.custom.SurvivorSlugcatEntity;
+import net.fot.fotslugcats.entity.client.*;
+import net.fot.fotslugcats.entity.custom.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.TamableAnimal;
@@ -26,23 +20,16 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
     public class ModEventBusEvents {
 
         @SubscribeEvent
-        public static void mobSpawns(EntityJoinLevelEvent event) {
-            System.out.println();
-            Entity entity = event.getEntity();
-
-
-        }
-
-        @SubscribeEvent
         public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(VoidModel.LAYER_LOCATION, VoidModel::createBodyLayer);
             event.registerLayerDefinition(SlugcatModel.LAYER_LOCATION, SlugcatModel::createBodyLayer);
             event.registerLayerDefinition(SlugpupModel.LAYER_LOCATION, SlugpupModel::createBodyLayer);
             event.registerLayerDefinition(HunterModel.LAYER_LOCATION, HunterModel::createBodyLayer);
-
         }
 
         @SubscribeEvent
         public static void registerAttributes(EntityAttributeCreationEvent event) {
+            event.put(ModEntities.VOID.get(), VoidSlugcatEntity.createAttributes().build());
             event.put(ModEntities.SLUGCAT.get(), RandomSlugcatEntity.createAttributes().build());
             event.put(ModEntities.SLUP.get(), SlupEntity.createAttributes().build());
             event.put(ModEntities.SURVIVOR.get(), SurvivorSlugcatEntity.createAttributes().build());

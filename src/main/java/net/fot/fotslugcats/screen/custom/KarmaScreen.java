@@ -1,7 +1,7 @@
 package net.fot.fotslugcats.screen.custom;
 
 import net.fot.fotslugcats.FoTSlugcats;
-import net.fot.fotslugcats.init.ModAttributes;
+import net.fot.fotslugcats.attributes.ModAttributes;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
