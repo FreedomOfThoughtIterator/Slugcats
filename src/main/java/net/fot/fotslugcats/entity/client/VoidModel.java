@@ -18,6 +18,7 @@ import net.minecraft.util.Mth;
 public class VoidModel<T extends VoidSlugcatEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(FoTSlugcats.MOD_ID, "void"), "main");
+	private final ModelPart root;
 	private final ModelPart bdoywhole;
 	private final ModelPart head;
 	private final ModelPart leftear;
@@ -52,7 +53,8 @@ public class VoidModel<T extends VoidSlugcatEntity> extends HierarchicalModel<T>
 	private final ModelPart tail4;
 
 	public VoidModel(ModelPart root) {
-		this.bdoywhole = root.getChild("bdoywhole");
+		this.root = root.getChild("root");
+		this.bdoywhole = this.root.getChild("bdoywhole");
 		this.head = this.bdoywhole.getChild("head");
 		this.leftear = this.head.getChild("leftear");
 		this.rightear = this.head.getChild("rightear");
@@ -86,14 +88,17 @@ public class VoidModel<T extends VoidSlugcatEntity> extends HierarchicalModel<T>
 		this.tail4 = this.tail3.getChild("tail4");
 	}
 
+
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition bdoywhole = partdefinition.addOrReplaceChild("bdoywhole", CubeListBuilder.create(), PartPose.offset(0.0F, 0.5362F, 0.8768F));
+		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 0.5362F, 0.8768F));
+
+		PartDefinition bdoywhole = root.addOrReplaceChild("bdoywhole", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		PartDefinition head = bdoywhole.addOrReplaceChild("head", CubeListBuilder.create().texOffs(41, 24).addBox(-5.0F, -9.9914F, -6.3695F, 10.0F, 10.0F, 10.0F, new CubeDeformation(0.0F))
-		.texOffs(113, 55).addBox(-2.0F, -0.9914F, -8.1695F, 4.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -15.3362F, 1.6232F));
+				.texOffs(113, 55).addBox(-2.0F, -0.9914F, -8.1695F, 4.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -15.3362F, 1.6232F));
 
 		PartDefinition chest_r1 = head.addOrReplaceChild("chest_r1", CubeListBuilder.create().texOffs(13, 113).addBox(-1.0F, -0.5F, -1.0F, 3.0F, 1.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.15F, -1.9914F, -7.1695F, -0.5149F, 0.0F, 1.5708F));
 
@@ -259,11 +264,11 @@ public class VoidModel<T extends VoidSlugcatEntity> extends HierarchicalModel<T>
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-		bdoywhole.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 	}
 
 	@Override
 	public ModelPart root() {
-		return bdoywhole;
+		return root;
 	}
 }
