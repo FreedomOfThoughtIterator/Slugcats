@@ -11,6 +11,7 @@
   "entity.fotslugcats.monk": "Monk",
   "entity.fotslugcats.survivor": "Survivor",
   "entity.fotslugcats.hunter": "Hunter",
+  "entity.fotslugcats.void": "Void",
 
   "subtitles.slugcatmeow": "Wawa",
   "subtitles.slugpupmeow": "Pup Wawa",
@@ -41,7 +42,8 @@
   "block.fotslugcats.iter_lattice": "Iterator Pipe Lattice",
   "block.fotslugcats.metallic_truss_small": "Small Truss",
   "block.fotslugcats.vent_hub_small": "Small Vent Hub",
-  "block.fotslugcats.vent_duct_small": "Small Vent Duct",
+  "block.fotslugcats.vent_duct_small": "Vent Duct",
+  "block.fotslugcats.vent_curved_small": "Curved Vent Duct",
   "block.fotslugcats.vent_duct_block": "Vent Duct Block",
   "block.fotslugcats.karma_lamp_1": "Violence Lamp",
   "block.fotslugcats.karma_lamp_2": "Lust Lamp",
@@ -53,6 +55,7 @@
   "block.fotslugcats.karma_lamp_8": "Karma 8 Lamp",
   "block.fotslugcats.karma_lamp_9": "Karma 9 Lamp",
   "block.fotslugcats.karma_lamp_10": "Ascension Lamp",
+  "block.fotslugcats.datapearl_reader": "Datapearl Reader",
 
   "painting.fotslugcats.glorbo_small.title": "The Creature (Small)",
   "painting.fotslugcats.glorbo_small.author": "Unknown",
@@ -82,6 +85,7 @@
   "item.fotslugcats.monk_spawn_egg": "Monk Spawn Egg",
   "item.fotslugcats.survivor_spawn_egg": "Survivor Spawn Egg",
   "item.fotslugcats.hunter_spawn_egg": "Hunter Spawn Egg",
+  "item.fotslugcats.void_spawn_egg": "Void Spawn Egg",
   "item.fotslugcats.slugcat_meat": "Raw Slugcat",
   "item.fotslugcats.cooked_slugcat_meat": "Cooked Slugcat",
 

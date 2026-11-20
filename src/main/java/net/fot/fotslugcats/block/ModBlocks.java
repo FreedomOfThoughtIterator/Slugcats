@@ -26,8 +26,6 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(FoTSlugcats.MOD_ID);
 
-    public Block block = Blocks.REDSTONE_LAMP;
-
     //PEBBLE FRUUIIIIIIIIIT
     public static final DeferredBlock<Block> PEBBLEFRUIT_VINE = registerBlock(
             "pebblefruit_vine",
@@ -386,30 +384,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> VENTCURVEDSMALL = registerBlock(
             "vent_curved_small",
             () -> new CurvedBlock(BlockBehaviour.Properties.of()
-                    .strength(2, 100)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.METAL)
-                    .noOcclusion()
-                    .isViewBlocking(ModBlocks::never)
-            ),
-            true
-    );
-
-    public static final DeferredBlock<Block> VENTLARGE = registerBlock(
-            "vent_duct_large",
-            () -> new CurvedBlock(BlockBehaviour.Properties.of()
-                    .strength(2, 100)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.METAL)
-                    .noOcclusion()
-                    .isViewBlocking(ModBlocks::never)
-            ),
-            true
-    );
-
-    public static final DeferredBlock<Block> VENTCURVEDLARGE = registerBlock(
-            "vent_curved_large",
-            () -> new VentCurvedBlock(BlockBehaviour.Properties.of()
                     .strength(2, 100)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.METAL)

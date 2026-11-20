@@ -57,8 +57,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.TRUSS.get());
         dropSelf(ModBlocks.VENTSMALL.get());
         dropSelf(ModBlocks.VENTCURVEDSMALL.get());
-        dropSelf(ModBlocks.VENTLARGE.get());
-        dropSelf(ModBlocks.VENTCURVEDLARGE.get());
         dropSelf(ModBlocks.ITER_COMP_BLUE.get());
         dropSelf(ModBlocks.ITER_COMP_RED.get());
         dropSelf(ModBlocks.METAL_PLATE.get());

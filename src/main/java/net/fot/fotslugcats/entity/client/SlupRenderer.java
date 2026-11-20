@@ -14,6 +14,6 @@ public class SlupRenderer extends MobRenderer<SlupEntity, SlugpupModel<SlupEntit
 
     @Override
     public ResourceLocation getTextureLocation(SlupEntity slupEntity) {
-        return ResourceLocation.fromNamespaceAndPath(FoTSlugcats.MOD_ID, "textures/entity/slugcat/white_slugcat.png");
+        return ResourceLocation.fromNamespaceAndPath(FoTSlugcats.MOD_ID, "textures/entity/slugcat/slugcat_white.png");
     }
 }

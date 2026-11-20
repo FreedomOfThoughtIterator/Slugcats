@@ -14,6 +14,7 @@ public class ModSounds {
             DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, FoTSlugcats.MOD_ID);
 
     public static final Supplier<SoundEvent> slugcatmeow = registerSoundEvent("slugcatmeow");
+    public static final Supplier<SoundEvent> voidmeow = registerSoundEvent("voidmeow");
     public static final Supplier<SoundEvent> slugpupmeow = registerSoundEvent("slugpupmeow");
     public static final Supplier<SoundEvent> slugcathit = registerSoundEvent("slugcathit");
     public static final Supplier<SoundEvent> slugpupcry = registerSoundEvent("slugpupcry");

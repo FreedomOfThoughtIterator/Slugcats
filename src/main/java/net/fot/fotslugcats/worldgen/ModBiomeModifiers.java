@@ -29,7 +29,7 @@ public class ModBiomeModifiers {
 
         context.register(SPAWN_SLUGCAT, new BiomeModifiers.AddSpawnsBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS), biomes.getOrThrow(Biomes.RIVER), biomes.getOrThrow(Biomes.BIRCH_FOREST), biomes.getOrThrow(Biomes.DARK_FOREST), biomes.getOrThrow(Biomes.CHERRY_GROVE)),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntities.SLUGCAT.get(), 20, 5, 10)))
+                List.of(new MobSpawnSettings.SpawnerData(ModEntities.SLUGCAT.get(), 8, 5, 10)))
         );
     }
 

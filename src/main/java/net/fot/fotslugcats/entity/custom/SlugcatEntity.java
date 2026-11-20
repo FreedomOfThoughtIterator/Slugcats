@@ -2,8 +2,11 @@ package net.fot.fotslugcats.entity.custom;
 
 import net.fot.fotslugcats.entity.ModEntities;
 import net.fot.fotslugcats.entity.SlugcatState;
+import net.fot.fotslugcats.entity.goals.EatCropGoal;
 import net.fot.fotslugcats.item.ModItems;
 import net.fot.fotslugcats.sound.ModSounds;
+import net.fot.fotslugcats.util.ModTags;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -16,12 +19,16 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -33,22 +40,26 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.AABB;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.constant.Constable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Supplier;
 
+@EventBusSubscriber
 public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
 
     public final AnimationState idleAnimationState = new AnimationState();
     public int idleAnimationTimeout = 0;
     public final AnimationState sitAnimationState = new AnimationState();
+    public int loafAnimationTimeout = 0;
+    private static final int EAT_ANIMATION_TICKS = 40;
+    private int eatAnimationTick;
+    private EatCropGoal eatCropGoal;
 
     /* ASB (Advanced Slugcat Behaviours) variables and methods */
     public static final EntityDataAccessor<Integer> INTERNALTICKTIMER =
@@ -64,6 +75,10 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
 
     private int getHunger() {
         return this.entityData.get(HUNGER);
+    }
+
+    private int getMaxHunger() {
+        return 20;
     }
 
     private void incrementInternalTickTimer() {
@@ -82,17 +97,45 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
         this.entityData.set(HUNGER, value);
     }
 
+    @SubscribeEvent
+    public static void EatAnimal(LivingDeathEvent event) {
+        Entity source = event.getSource().getEntity();
+        Entity entity = event.getEntity();
+        int hungerIncrement = 1;
+
+        if (source instanceof SlugcatEntity slugcat) {
+            System.out.println("Slugcat killed " + entity);
+            System.out.println("Slugcat " + slugcat);
+            System.out.println(slugcat.getHunger());
+            if (entity instanceof Animal) {
+                switch (entity) {
+                    case Cow cow -> hungerIncrement = 6;
+                    case Chicken chicken -> hungerIncrement = 4;
+                    case Sheep sheep -> hungerIncrement = 4;
+                    case Pig pig -> hungerIncrement = 5;
+                    default -> {
+                    }
+                }
+                slugcat.setHunger(slugcat.getHunger() + hungerIncrement);
+                System.out.println(slugcat.getHunger());
+            }
+        }
+    }
+
+    /* end of ASB */
 
     public Map<Integer, Supplier<? extends EntityType<? extends SlugcatEntity>>> scugs =
             Map.of(
                     0, ModEntities.SLUGCAT,
                     1, ModEntities.MONK,
                     2, ModEntities.SURVIVOR,
-                    3, ModEntities.HUNTER
+                    3, ModEntities.HUNTER,
+                    4, ModEntities.VOID
             );
 
     public SlugcatEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+        this.setTame(false, false);
     }
 
     @Override
@@ -103,7 +146,31 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
 
     @Override
     protected void registerGoals() {
+        this.eatCropGoal = new EatCropGoal(this);
+        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true));
+        this.targetSelector.addGoal(1, this.eatCropGoal);
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Animal.class, true, true) {
+            @Override
+            public boolean canUse() {
+                LivingEntity checkTarget = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.targetType, this.getTargetSearchArea(this.getFollowDistance()), (p_148152_) -> true), this.targetConditions, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+                SlugcatEntity sclug = (SlugcatEntity)this.mob;
+                if (checkTarget != null || !(sclug instanceof MonkSlugcatEntity)) {
+                    if (sclug.state == SlugcatState.HUNGRY) {
+                        if (checkTarget instanceof SlugcatEntity) {
+                            return false;
+                        }
+                    } else if (sclug.state == SlugcatState.STARVING) {
+                        if (checkTarget instanceof SlugcatEntity) {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+                return super.canUse();
+            }
+        });
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.2, Ingredient.of(ModItems.BLUEFRUIT.get()), false));
@@ -111,12 +178,42 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, (float) 10));
 
         this.targetSelector.addGoal(6, new OwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.goalSelector.addGoal(7, new FollowOwnerGoal(this, 1, (float) 10, (float) 2));
 
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(2, new FloatGoal(this));
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 20, 10f));
+    }
+
+    protected void customServerAiStep() {
+        this.eatAnimationTick = this.eatCropGoal.getEatAnimationTick();
+        super.customServerAiStep();
+    }
+
+    public void aiStep() {
+        if (this.level().isClientSide) {
+            this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
+        }
+
+        super.aiStep();
+    }
+
+    public void handleEntityEvent(byte id) {
+        if (id == 10) {
+            this.eatAnimationTick = 40;
+        } else {
+            super.handleEntityEvent(id);
+        }
+    }
+
+    public void ate() {
+        super.ate();
+        this.setHunger(this.getHunger() + 5);
+        if (this.isBaby()) {
+            this.ageUp(60);
+        }
     }
 
     @Override
@@ -145,48 +242,51 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
     }
 
     @Override
-    public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
-        ItemStack itemstack = sourceentity.getItemInHand(hand);
-        InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
-        Item item = itemstack.getItem();
-        if (itemstack.getItem() instanceof SpawnEggItem) {
-            retval = super.mobInteract(sourceentity, hand);
-        } else if (this.level().isClientSide()) {
-            retval = (this.isTame() && this.isOwnedBy(sourceentity) || this.isFood(itemstack)) ? InteractionResult.sidedSuccess(this.level().isClientSide()) : InteractionResult.PASS;
-        } else {
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        Item item = itemStack.getItem();
+        if (!this.level().isClientSide || this.isBaby() && this.isFood(itemStack)) {
             if (this.isTame()) {
-                if (this.isOwnedBy(sourceentity)) {
-                    if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                        this.usePlayerItem(sourceentity, hand, itemstack);
-                        FoodProperties foodproperties = itemstack.getFoodProperties(this);
-                        float nutrition = foodproperties != null ? (float) foodproperties.nutrition() : 1;
-                        this.heal(nutrition);
-                        retval = InteractionResult.sidedSuccess(this.level().isClientSide());
-                    } else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                        this.usePlayerItem(sourceentity, hand, itemstack);
-                        this.heal(4);
-                        retval = InteractionResult.sidedSuccess(this.level().isClientSide());
-                    } else {
-                        retval = super.mobInteract(sourceentity, hand);
+                boolean consumed = false;
+                if (this.isFood(itemStack) && this.getHunger() < this.getMaxHunger()) {
+                    if (!consumed) {
+                        itemStack.consume(1, player);
+                        consumed = true;
                     }
+                    this.setHunger(this.getHunger() + 1);
                 }
-            } else if (this.isFood(itemstack)) {
-                this.usePlayerItem(sourceentity, hand, itemstack);
-                if (this.random.nextInt(3) == 0 && !EventHooks.onAnimalTame(this, sourceentity)) {
-                    this.tame(sourceentity);
-                    this.level().broadcastEntityEvent(this, (byte) 7);
-                } else {
-                    this.level().broadcastEntityEvent(this, (byte) 6);
+                if (this.isFood(itemStack) && this.getHealth() < this.getMaxHealth()) {
+                    if (!consumed) {
+                        itemStack.consume(1, player);
+                        consumed = true;
+                    }
+                    FoodProperties foodProperties = (FoodProperties)itemStack.get(DataComponents.FOOD);
+                    float f = foodProperties != null ? foodProperties.nutrition() : 1.0F;
+                    this.heal(2.0F * f);
+                    return InteractionResult.sidedSuccess(this.level().isClientSide());
                 }
-                this.setPersistenceRequired();
-                retval = InteractionResult.sidedSuccess(this.level().isClientSide());
-            } else {
-                retval = super.mobInteract(sourceentity, hand);
-                if (retval == InteractionResult.SUCCESS || retval == InteractionResult.CONSUME)
-                    this.setPersistenceRequired();
+            } else if (this.isFood(itemStack)) {
+                itemStack.consume(1, player);
+                this.tryToTame(player);
+                return InteractionResult.SUCCESS;
             }
+            return super.mobInteract(player, hand);
+        } else {
+            boolean bl = this.isOwnedBy(player) || this.isTame() || this.isFood(itemStack) && !this.isTame();
+            return bl ? InteractionResult.CONSUME : InteractionResult.PASS;
         }
-        return retval;
+    }
+
+    private void tryToTame(Player player) {
+        if (this.random.nextInt(3) == 0) {
+            this.tame(player);
+            this.navigation.stop();
+            this.setTarget(null);
+            this.setOrderedToSit(true);
+            this.level().broadcastEntityEvent(this, (byte)7);
+        } else {
+            this.level().broadcastEntityEvent(this, (byte)6);
+        }
     }
 
     @Override
@@ -196,7 +296,12 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
 
     @Override
     public boolean isFood(ItemStack stack) {
-        return stack.is(ModItems.BLUEFRUIT.get());
+        return stack.is(ModTags.Items.SLUG_FOOD);
+    }
+
+    @Override
+    public boolean canBeLeashed() {
+        return true;
     }
 
     @Override
@@ -204,7 +309,7 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
         int weightedRandom = Mth.nextInt(RandomSource.create(), 0, 101);
         int scug = 0;
         if (80 <= weightedRandom && weightedRandom <= 101) {
-            scug = Mth.nextInt(RandomSource.create(), 1, 4);
+            scug = Mth.nextInt(RandomSource.create(), 1, 5);
         }
         Supplier<? extends EntityType<? extends SlugcatEntity>> slugSpawn = scugs.get(scug);
         return slugSpawn.get().create(serverLevel);
@@ -216,6 +321,10 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
             this.idleAnimationState.start(this.tickCount);
         } else {
             --this.idleAnimationTimeout;
+        }
+        if(this.isInSittingPose()) {
+            this.sitAnimationState.start(this.tickCount);
+
         }
     }
 
@@ -238,33 +347,28 @@ public class SlugcatEntity extends TamableAnimal implements RangedAttackMob {
         super.tick();
 
         if (this.getInternalTickTimer() >= 600) {
-            if (this.state != SlugcatState.STARVING) {
-                if (this.getHunger() == 0) {
-                    this.state = SlugcatState.HUNGRY;
-                } else {
-                    this.decrementHunger();
-                    this.setInternalTickTimer(0);
-                }
-                System.out.println(this.getHunger());
+            if (this.getHunger() == 0) {
+                this.hurt(new DamageSource(level().holderOrThrow(DamageTypes.STARVE)), 1);
+            } else if (this.getHunger() > 0) {
+                this.decrementHunger();
             }
-        }
-        if (this.getInternalTickTimer() >= 6000 && this.state == SlugcatState.STARVING) {
-            this.kill();
-        }
-        if (this.getInternalTickTimer() >= 12000) {
-            this.state = SlugcatState.STARVING;
             this.setInternalTickTimer(0);
         }
 
-        if(this.level().isClientSide()) {
+        if (this.level().isClientSide()) {
             this.setupAnimationStates();
         } else {
             this.incrementInternalTickTimer();
+            if (this.getHunger() < this.getMaxHunger() && this.state == SlugcatState.NORMAL) {
+                this.state = SlugcatState.HUNGRY;
+            } else if (this.getHunger() <= 0) {
+                this.state = SlugcatState.STARVING;
+            }
         }
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @javax.annotation.Nullable SpawnGroupData spawnGroupData) {
+    public @NotNull SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @javax.annotation.Nullable SpawnGroupData spawnGroupData) {
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 

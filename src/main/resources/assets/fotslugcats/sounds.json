@@ -50,6 +50,17 @@
       "fotslugcats:meownormalshort8"
     ]
   },
+  "voidmeow": {
+    "subtitle": "subtitles.slugcatmeow",
+    "sounds": [
+      "fotslugcats:meowvoid1",
+      "fotslugcats:meowvoid2",
+      "fotslugcats:meowvoid3",
+      "fotslugcats:meowvoid1short",
+      "fotslugcats:meowvoid2short",
+      "fotslugcats:meowvoid3short"
+    ]
+  },
   "slugpupmeow": {
     "subtitle": "subtitles.slugpupmeow",
     "sounds": [

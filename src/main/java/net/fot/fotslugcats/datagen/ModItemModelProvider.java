@@ -1,6 +1,7 @@
 package net.fot.fotslugcats.datagen;
 
 import net.fot.fotslugcats.FoTSlugcats;
+import net.fot.fotslugcats.block.ModBlocks;
 import net.fot.fotslugcats.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -31,6 +32,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SURVIVOR_SPAWN_EGG.get());
         basicItem(ModItems.MONK_SPAWN_EGG.get());
         basicItem(ModItems.HUNTER_SPAWN_EGG.get());
+        basicItem(ModItems.VOID_SPAWN_EGG.get());
+
 
     }
 }

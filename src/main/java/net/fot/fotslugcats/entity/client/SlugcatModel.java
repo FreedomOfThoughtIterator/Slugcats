@@ -15,6 +15,7 @@ import net.minecraft.util.Mth;
 public class SlugcatModel<T extends SlugcatEntity> extends HierarchicalModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(FoTSlugcats.MOD_ID, "slugcat"), "main");
+    private final ModelPart bdy;
     private final ModelPart bdoywhole;
     private final ModelPart head;
     private final ModelPart leftear;
@@ -39,8 +40,9 @@ public class SlugcatModel<T extends SlugcatEntity> extends HierarchicalModel<T> 
     private final ModelPart tail3;
     private final ModelPart tail4;
 
-	public SlugcatModel(ModelPart root) {
-        this.bdoywhole = root.getChild("bdoywhole");
+    public SlugcatModel(ModelPart root) {
+        this.bdy = root.getChild("bdy");
+        this.bdoywhole = this.bdy.getChild("bdoywhole");
         this.head = this.bdoywhole.getChild("head");
         this.leftear = this.head.getChild("leftear");
         this.rightear = this.head.getChild("rightear");
@@ -69,7 +71,9 @@ public class SlugcatModel<T extends SlugcatEntity> extends HierarchicalModel<T> 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition bdoywhole = partdefinition.addOrReplaceChild("bdoywhole", CubeListBuilder.create(), PartPose.offset(0.0F, 0.5362F, 0.8768F));
+        PartDefinition bdy = partdefinition.addOrReplaceChild("bdy", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+        PartDefinition bdoywhole = bdy.addOrReplaceChild("bdoywhole", CubeListBuilder.create(), PartPose.offset(0.0F, -23.4638F, 0.8768F));
 
         PartDefinition head = bdoywhole.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 23).addBox(-5.0F, -9.9914F, -6.3695F, 10.0F, 10.0F, 10.0F, new CubeDeformation(0.0F))
                 .texOffs(94, 50).addBox(-2.0F, -0.9914F, -8.1695F, 4.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -15.3362F, 1.6232F));
@@ -179,6 +183,7 @@ public class SlugcatModel<T extends SlugcatEntity> extends HierarchicalModel<T> 
         this.applyHeadRotation(netHeadYaw, headPitch);
 
         this.animateWalk(SlugcatAnimations.walking, limbSwing, limbSwingAmount, 2f, 1f);
+        this.animate(entity.sitAnimationState, SlugcatAnimations.loaf, ageInTicks, 1f);
         this.animate(entity.idleAnimationState, SlugcatAnimations.idle, ageInTicks, 1f);
     }
 
@@ -192,11 +197,11 @@ public class SlugcatModel<T extends SlugcatEntity> extends HierarchicalModel<T> 
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        bdoywhole.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+        bdy.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 
     @Override
     public ModelPart root() {
-        return bdoywhole;
+        return bdy;
     }
 }

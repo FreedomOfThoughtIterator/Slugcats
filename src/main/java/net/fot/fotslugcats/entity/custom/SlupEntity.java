@@ -13,8 +13,4 @@ public class SlupEntity extends SlugcatEntity {
         super(entityType, level);
     }
 
-    @Override
-    protected void registerGoals() {
-    }
-
 }

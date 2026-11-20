@@ -4,6 +4,7 @@ import net.fot.fotslugcats.FoTSlugcats;
 import net.fot.fotslugcats.entity.ModEntities;
 import net.fot.fotslugcats.entity.client.*;
 import net.fot.fotslugcats.entity.custom.*;
+import net.fot.fotslugcats.oracle.puppet.Puppet;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.TamableAnimal;
@@ -36,7 +37,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
             event.put(ModEntities.MONK.get(), SurvivorSlugcatEntity.createAttributes().build());
             event.put(ModEntities.HUNTER.get(), SurvivorSlugcatEntity.createAttributes().build());
 
-
+            event.put(ModEntities.ORACLE.get(), Puppet.createMobAttributes().build());
         }
 
         @SubscribeEvent

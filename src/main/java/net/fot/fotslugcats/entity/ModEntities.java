@@ -2,6 +2,7 @@ package net.fot.fotslugcats.entity;
 
 import net.fot.fotslugcats.FoTSlugcats;
 import net.fot.fotslugcats.entity.custom.*;
+import net.fot.fotslugcats.oracle.puppet.Puppet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -40,6 +41,11 @@ public class ModEntities {
             ENTITY_TYPES.register("hunter", () -> EntityType.Builder.of(HunterSlugcatEntity::new, MobCategory.CREATURE)
                     .sized(0.5f, 1f).build("hunter"));
 
+
+
+    public static final Supplier<EntityType<Puppet>> ORACLE =
+            ENTITY_TYPES.register("oracle", () -> EntityType.Builder.of(Puppet::new, MobCategory.MISC)
+                    .sized(1f, 1f).build("oracle"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -81,6 +81,10 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.HUNTER, 0xffeeff, 0xffeeff,
                     new Item.Properties())
     );
+    public static final DeferredItem<Item> VOID_SPAWN_EGG = ITEMS.register("void_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.VOID, 0xffeeff, 0xffeeff,
+                    new Item.Properties())
+    );
 
     //Return to when Slup model is finished
     public static final DeferredItem<Item> SLUP_SPAWN_EGG = ITEMS.register("slup_spawn_egg",

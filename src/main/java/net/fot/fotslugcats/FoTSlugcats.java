@@ -122,6 +122,7 @@ public class FoTSlugcats {
             EntityRenderers.register(ModEntities.MONK.get(), MonkSlugcatRenderer::new);
             EntityRenderers.register(ModEntities.HUNTER.get(), HunterSlugcatRenderer::new);
 
+
         }
     }
 }

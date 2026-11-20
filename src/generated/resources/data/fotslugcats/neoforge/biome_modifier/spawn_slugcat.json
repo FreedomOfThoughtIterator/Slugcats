@@ -11,6 +11,6 @@
     "type": "fotslugcats:slugcat",
     "maxCount": 10,
     "minCount": 5,
-    "weight": 20
+    "weight": 8
   }
 }
